@@ -1,9 +1,39 @@
-import example.pepita
+import rodados.*
+import dependencias.*
 
 describe "group of tests for pepita" {
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+    const deportes = new Dependencias(cantidadEmpleados = 45)
+    const cultura = new Dependencias(cantidadEmpleados = 31)
+
+
+
+  method initialize(){
+
+    const cachito = new ChevroletCorsa(color = "rojo")
+
+    deportes.agregarAFlota(cachito)
+    deportes.agregarAFlota(new ChevroletCorsa(color = "azul"))
+    deportes.agregarAFlota(new ChevroletCorsa(color = "verde"))
+    deportes.agregarAFlota(new RenaultKwid(tanqueAdicional = true))
+    deportes.agregarAFlota(autoEspecial)
+
+    cultura.agregarAFlota(cachito)
+    cultura.agregarAFlota(new RenaultKwid(tanqueAdicional = true))
+    cultura.agregarAFlota(new RenaultKwid(tanqueAdicional = true))
+    cultura.agregarAFlota(new RenaultKwid(tanqueAdicional = false))
+    trafic.motor(motorBaraton)
+    trafic.interior(interiorPopular)
+    cultura.agregarAFlota(trafic)
+
   }
 
 }
+
+test "En deporte el peso total es 6450"{
+  assert.equals(6450, deportes.pesoTotalFlota()) // el numero sale de la suma de todos los que estan agregados en DEPORTES, cachito, 2 corsas, el renault con el tanque y el especial
+}
+
+test "En cultura el peso total es 10700"{
+  assert.equals(10700, cultura.pesoTotalFlota()) // el numero sale de la suma de todos los que estan agregados en cultura
+}|
